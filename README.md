@@ -38,6 +38,12 @@ docker-compose exec react-app bash
 
 ```bash
 docker-compose exec fastapi-app bash
+
+DBマイグレートコマンド
+poetry run python -m api.migrate_db
+
+APIユニットテストコマンド
+poetry run pytest
 ```
 
 ### DBコンテナログイン
