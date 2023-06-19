@@ -50,6 +50,17 @@ poetry run pytest
 
 ```bash
 docker-compose exec db bash
+
+DBバックアップ
+
+cd /dump
+mysqldump -u root -ppassword --single-transaction --all-databases --events > mysql_dump.sql
+
+DBリストア
+db/dump内にバックアップファイルを置く。
+
+cd /dump
+mysql -u root -ppassword < mysql_dump.sql
 ```
 
 ## DB管理ツールログイン
