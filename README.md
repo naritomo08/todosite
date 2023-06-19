@@ -10,6 +10,9 @@ cd todosite
 docker-compose build
 docker-compose run --entrypoint "poetry install" fastapi-app
 docker-compose up -d
+
+5分ほど待ってから実施
+
 docker-compose exec fastapi-app poetry run python -m api.migrate_db
 ```
 
@@ -23,6 +26,8 @@ http://localhost:8000/docs
 
 http://localhost:3000/
 
+## 各種コンテナログイン
+
 ### Reactコンテナログイン
 
 ```bash
@@ -34,3 +39,21 @@ docker-compose exec react-app bash
 ```bash
 docker-compose exec fastapi-app bash
 ```
+
+### DBコンテナログイン
+
+```bash
+docker-compose exec db bash
+```
+
+## DB管理ツールログイン
+
+### adminer(DB管理ツール)
+
+http://127.0.0.1:8081
+
+* ログイン情報
+  - サーバ: db
+  - ユーザ名: admin
+  - パスワード: password
+  - データベース: demo

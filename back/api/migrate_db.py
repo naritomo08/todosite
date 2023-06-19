@@ -1,8 +1,15 @@
+import os
+
 from sqlalchemy import create_engine
 
 from api.models.task import Base
 
-DB_URL = "mysql+pymysql://root@db:3306/demo?charset=utf8"
+DB_USER = os.environ.get("DB_USER", "admin")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "password")
+DB_HOST = os.environ.get("DB_HOST", "db")
+DB_PORT = os.environ.get("DB_PORT", "3306")
+
+DB_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/demo?charset=utf8"
 engine = create_engine(DB_URL, echo=True)
 
 def reset_database():

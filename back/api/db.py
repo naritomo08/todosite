@@ -3,8 +3,8 @@ import os
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker,declarative_base
 
-DB_USER = os.environ.get("DB_USER", "root")
-DB_PASSWORD = os.environ.get("DB_PASSWORD", "")
+DB_USER = os.environ.get("DB_USER", "admin")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "password")
 DB_HOST = os.environ.get("DB_HOST", "db")
 DB_PORT = os.environ.get("DB_PORT", "3306")
 
