@@ -56,6 +56,10 @@ DBバックアップ
 cd /dump
 mysqldump -u root -ppassword --single-transaction --all-databases --events > mysql_dump.sql
 
+コンテナログインせず取得する場合
+
+docker-compose exec db mysqldump -u root -ppassword --single-transaction --all-databases --events > mysql_dump.sql
+
 DBリストア
 db/dump内にバックアップファイルを置く。
 
