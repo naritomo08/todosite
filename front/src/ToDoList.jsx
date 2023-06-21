@@ -2,6 +2,8 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import "./css/ToDoList.css";
 
+const Back_URL = process.env.REACT_APP_BURL;
+
 export const ToDoList = () => {
     const [completedTodos, setCompletedTodos] = useState([])
 	const [todos, setTodos] = useState([])
@@ -14,12 +16,12 @@ export const ToDoList = () => {
 		}
 	}
 	function handleComplete(index) {
-		axios.put(`http://localhost:8000/tasks/` + todos[index].id + `/done`).then(() => {
+		axios.put(Back_URL + `/tasks/` + todos[index].id + `/done`).then(() => {
 			handleGetTodos()
 		})
 	}
 	function handleGetTodos() {
-		axios.get("http://localhost:8000/tasks").then((res) => {
+		axios.get(Back_URL + "/tasks").then((res) => {
 			let tmpCompletedTodos = []
 			let tmpTodos = []
 			for (let i = 0; i < res.data.length; i++) {
@@ -48,7 +50,7 @@ export const ToDoList = () => {
 	}, [])
 	function handlePush() {
 		if (todo !== "") {
-			axios.post("http://localhost:8000/tasks", {
+			axios.post(Back_URL + "/tasks", {
 					title: todo,
 				}).then(() => {
 				handleGetTodos()
@@ -57,10 +59,11 @@ export const ToDoList = () => {
 		}
 	}
 	function handleDelete(index) {
-		axios.delete(`http://localhost:8000/tasks/` + completedTodos[index].id).then(() => {
+		axios.delete(Back_URL + `/tasks/` + completedTodos[index].id).then(() => {
 			handleGetTodos()
 		})
 	}
+
 	return (
 		<div className="todoList">
 			<h1 className="title">ToDoリスト</h1>

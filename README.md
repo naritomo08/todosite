@@ -7,6 +7,12 @@ TODOサイトを立ち上げることができます。
 ```bash
 git clone https://github.com/naritomo08/todosite.git
 cd todosite
+touch front/env.development.local
+vi front/env.development.local
+
+以下の内容で作成する。
+REACT_APP_BURL = "http://localhost:8000"
+
 docker-compose build
 docker-compose run --entrypoint "poetry install" fastapi-app
 docker-compose up -d
