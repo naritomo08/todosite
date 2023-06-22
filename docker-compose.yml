@@ -1,5 +1,8 @@
 version: "3.9"
 
+volumes:
+  react_volume:
+
 services:
   react-app:
     build: ./front
@@ -7,7 +10,7 @@ services:
       - "3000:3000"
     volumes:
       - ./front:/app
-      - /app/node_modules
+      - react_volume:/app/node_modules
 
   fastapi-app:
     build: ./back
