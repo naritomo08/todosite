@@ -14,7 +14,7 @@ vi front/.env.development.local
 REACT_APP_BURL = "http://localhost:8000"
 
 docker-compose build
-docker-compose run --entrypoint "poetry install" fastapi-app
+docker-compose run --entrypoint "poetry install --no-root" fastapi-app
 docker-compose up -d
 
 5分ほど待ってから実施
